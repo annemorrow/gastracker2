@@ -39,9 +39,9 @@ public class MainActivity extends ActionBarActivity {
 
         mEnterGas.setText(Integer.toString(mEntry.getGas()), TextView.BufferType.EDITABLE);
         mEnterMiles.setText(Integer.toString(mEntry.getMiles()), TextView.BufferType.EDITABLE);
-/*
-        mEnterDate.setText(mEntry.getDate().toString());
-*/
+
+        mEnterDate.setText(mEntry.getDate().toString(), TextView.BufferType.NORMAL);
+
     }
 
     @Override
