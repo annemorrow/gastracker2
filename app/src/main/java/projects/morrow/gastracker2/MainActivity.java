@@ -7,14 +7,41 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class MainActivity extends ActionBarActivity {
+    private TextView mEnterGas;
+    private TextView mEnterMiles;
+    private TextView mEnterDate;
+    private Button mSubmitButton;
+
+    private Entry mEntry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mEnterGas = (TextView) findViewById(R.id.enter_gas);
+        mEnterMiles = (TextView) findViewById(R.id.enter_miles);
+        mEnterDate = (TextView) findViewById(R.id.enter_date);
+        mSubmitButton = (Button) findViewById(R.id.enter_button);
+
+        Calendar c = Calendar.getInstance();
+        if (mEntry == null) {
+            mEntry = new Entry(0, 0, c.getTime());
+        }
+
+        mEnterGas.setText(Integer.toString(mEntry.getGas()), TextView.BufferType.EDITABLE);
+        mEnterMiles.setText(Integer.toString(mEntry.getMiles()), TextView.BufferType.EDITABLE);
+/*
+        mEnterDate.setText(mEntry.getDate().toString());
+*/
     }
 
     @Override

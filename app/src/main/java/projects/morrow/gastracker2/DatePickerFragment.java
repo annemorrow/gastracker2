@@ -7,6 +7,8 @@ import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Created by anne on 7/15/15.
@@ -27,5 +29,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
         // Do something with the date chosen by the user
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day);
     }
 }

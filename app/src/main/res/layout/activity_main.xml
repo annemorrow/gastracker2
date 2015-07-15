@@ -22,7 +22,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:ems="10"/>
+        android:ems="10"
+        android:id="@+id/enter_miles"/>
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -31,7 +32,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:ems="10"/>
+        android:ems="10"
+        android:id="@+id/enter_gas"/>
 
     <TextView
         android:layout_width="fill_parent"
