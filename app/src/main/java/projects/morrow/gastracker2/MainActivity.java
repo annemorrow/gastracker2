@@ -1,6 +1,7 @@
 package projects.morrow.gastracker2;
 
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView mEnterMiles;
     private TextView mEnterDate;
     private Button mSubmitButton;
+    private Button mListButton;
 
     private Entry mEntry;
 
@@ -31,6 +33,7 @@ public class MainActivity extends ActionBarActivity {
         mEnterMiles = (TextView) findViewById(R.id.enter_miles);
         mEnterDate = (TextView) findViewById(R.id.enter_date);
         mSubmitButton = (Button) findViewById(R.id.enter_button);
+        mListButton = (Button) findViewById(R.id.list_button);
 
         Calendar c = Calendar.getInstance();
         if (mEntry == null) {
@@ -41,6 +44,14 @@ public class MainActivity extends ActionBarActivity {
         mEnterMiles.setText(Integer.toString(mEntry.getMiles()), TextView.BufferType.EDITABLE);
 
         mEnterDate.setText(mEntry.getDate().toString(), TextView.BufferType.NORMAL);
+
+        mListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, EntryListActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 

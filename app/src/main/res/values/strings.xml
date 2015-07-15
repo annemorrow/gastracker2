@@ -4,4 +4,9 @@
     <string name="enter_gas">Gallons Used (Since Last Entry)</string>
     <string name="enter_miles">Miles Driven (Total)</string>
     <string name="enter_button_text">Enter</string>
+    <string name="title_activity_entry_list">EntryListActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="view_list">View List</string>
+    <string name="title_activity_blank_test">BlankTestActivity</string>
 </resources>
