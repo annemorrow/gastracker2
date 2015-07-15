@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -25,7 +26,7 @@ public class EntryListActivity extends ListActivity {
         setContentView(R.layout.activity_entry_list);
 
         // mListView = (ListView) findViewById(R.id.list);
-
+/*
         Entry first = new Entry(15, 15, Calendar.getInstance().getTime());
         Entry second = new Entry (1, 14, Calendar.getInstance().getTime());
         Entry third = new Entry (30, 10, Calendar.getInstance().getTime());
@@ -34,8 +35,8 @@ public class EntryListActivity extends ListActivity {
         mEntryList.add(first);
         mEntryList.add(second);
         mEntryList.add(third);
-
-        // mEntryList = EntryList.get(this).getEntries();
+*/
+        mEntryList = EntryList.get(this).getEntries();
         EntryAdapter adapter = new EntryAdapter(mEntryList);
         setListAdapter(adapter);
     }
@@ -84,7 +85,8 @@ public class EntryListActivity extends ListActivity {
             miles.setText(Integer.toString(e.getMiles()), TextView.BufferType.NORMAL);
 
             TextView date = (TextView) convertView.findViewById(R.id.entry_list_item_date);
-            date.setText(e.getDate().toString(), TextView.BufferType.NORMAL);
+            DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+            date.setText(dateFormat.format(e.getDate()), TextView.BufferType.NORMAL);
 
             return convertView;
         }

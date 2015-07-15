@@ -31,5 +31,6 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         // Do something with the date chosen by the user
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, day);
+        Date date = cal.getTime();
     }
 }

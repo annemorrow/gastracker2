@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -23,6 +25,11 @@ public class MainActivity extends ActionBarActivity {
     private Button mListButton;
 
     private Entry mEntry;
+
+    public void setDate(Date date) {
+        DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+        mEnterDate.setText(dateFormat.format(date), TextView.BufferType.NORMAL);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +49,31 @@ public class MainActivity extends ActionBarActivity {
 
         mEnterGas.setText(Integer.toString(mEntry.getGas()), TextView.BufferType.EDITABLE);
         mEnterMiles.setText(Integer.toString(mEntry.getMiles()), TextView.BufferType.EDITABLE);
+        
+        setDate(mEntry.getDate());
 
-        mEnterDate.setText(mEntry.getDate().toString(), TextView.BufferType.NORMAL);
+        mSubmitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int gas = Integer.parseInt(mEnterGas.getText().toString());
+                int miles = Integer.parseInt(mEnterMiles.getText().toString());
+                DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+                Date date = null;
+                try {
+                    date = dateFormat.parse(mEnterDate.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Entry entry = null;
+                if (date != null) {
+                    entry = new Entry(miles, gas, date);
+                } else {
+                    entry = new Entry(miles, gas, Calendar.getInstance().getTime());
+                }
+                EntryList list = EntryList.get(getApplicationContext());
+                list.addEntry(entry);
+            }
+        });
 
         mListButton.setOnClickListener(new View.OnClickListener() {
             @Override
