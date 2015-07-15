@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Gas Tracker</string>
+    <string name="action_settings">Settings</string>
+    <string name="enter_gas">Gallons Used (Since Last Entry)</string>
+    <string name="enter_miles">Miles Driven (Total)</string>
+    <string name="enter_button_text">Enter</string>
+</resources>
