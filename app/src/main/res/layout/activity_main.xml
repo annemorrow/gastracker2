@@ -35,17 +35,16 @@
         android:ems="10"
         android:id="@+id/enter_gas"/>
 
-    <TextView
+    <Button
+        android:id="@+id/buttonSelectDate"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/enter_date"
-        android:text="Date"
-        android:onClick="showDatePickerDialog"
-        android:clickable="true"/>
+        android:text="Select Date" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/enter_button_text"
         android:ems="15"
@@ -53,7 +52,7 @@
         android:layout_gravity="center_horizontal"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/view_list"
         android:ems="15"

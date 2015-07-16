@@ -1,6 +1,8 @@
 package projects.morrow.gastracker2;
 
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.DialogFragment;
@@ -9,27 +11,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 public class MainActivity extends ActionBarActivity {
     private TextView mEnterGas;
     private TextView mEnterMiles;
-    private TextView mEnterDate;
+    private TextView btnSelectDate;
     private Button mSubmitButton;
     private Button mListButton;
 
     private Entry mEntry;
 
-    public void setDate(Date date) {
-        DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
-        mEnterDate.setText(dateFormat.format(date), TextView.BufferType.NORMAL);
-    }
+    static final int DATE_DIALOG_ID = 0;
+    public  int year,month,day;
+    private int mYear, mMonth, mDay;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +42,32 @@ public class MainActivity extends ActionBarActivity {
 
         mEnterGas = (TextView) findViewById(R.id.enter_gas);
         mEnterMiles = (TextView) findViewById(R.id.enter_miles);
-        mEnterDate = (TextView) findViewById(R.id.enter_date);
         mSubmitButton = (Button) findViewById(R.id.enter_button);
         mListButton = (Button) findViewById(R.id.list_button);
+        btnSelectDate = (Button) findViewById(R.id.buttonSelectDate);
 
-        Calendar c = Calendar.getInstance();
-        if (mEntry == null) {
+        final Calendar c = Calendar.getInstance();
+        if (mEntry != null) {
+            c.setTime(mEntry.getDate());
+        } else {
             mEntry = new Entry(0, 0, c.getTime());
         }
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
 
         mEnterGas.setText(Integer.toString(mEntry.getGas()), TextView.BufferType.EDITABLE);
         mEnterMiles.setText(Integer.toString(mEntry.getMiles()), TextView.BufferType.EDITABLE);
-        
-        setDate(mEntry.getDate());
+
+
+        btnSelectDate.setText(mMonth + 1 + "/" + mDay + "/" + mYear);
+        btnSelectDate.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                // Show the DatePickerDialog
+                showDialog(DATE_DIALOG_ID);
+            }
+        });
 
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
                 DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
                 Date date = null;
                 try {
-                    date = dateFormat.parse(mEnterDate.getText().toString());
+                    date = dateFormat.parse(btnSelectDate.getText().toString());
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -83,6 +100,37 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+    }
+
+    // Register  DatePickerDialog listener
+    private DatePickerDialog.OnDateSetListener mDateSetListener =
+            new DatePickerDialog.OnDateSetListener() {
+                // the callback received when the user "sets" the Date in the DatePickerDialog
+                public void onDateSet(DatePicker view, int yearSelected,
+                                      int monthOfYear, int dayOfMonth) {
+                    year = yearSelected;
+                    month = monthOfYear;
+                    day = dayOfMonth;
+                    // Set the Selected Date in Select date Button
+                    btnSelectDate.setText(month + 1 + "/" + day + "/" + year);
+                }
+            };
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case DATE_DIALOG_ID:
+                // create a new DatePickerDialog with values you want to show
+                return new DatePickerDialog(this,
+                        mDateSetListener,
+                        mYear, mMonth, mDay);
+            // create a new TimePickerDialog with values you want to show
+            /*case TIME_DIALOG_ID:
+                return new TimePickerDialog(this,
+                        mTimeSetListener, mHour, mMinute, false);
+*/
+        }
+        return null;
     }
 
     @Override
