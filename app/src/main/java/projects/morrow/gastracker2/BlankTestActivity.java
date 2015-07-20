@@ -1,12 +1,13 @@
 package projects.morrow.gastracker2;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class BlankTestActivity extends ActionBarActivity {
+public class BlankTestActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

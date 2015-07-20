@@ -1,9 +1,11 @@
 package projects.morrow.gastracker2;
 
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
@@ -21,7 +23,7 @@ import java.util.Date;
 import java.util.UUID;
 
 
-public class EntryActivity extends ActionBarActivity {
+public class EntryActivity extends FragmentActivity {
     private TextView mEnterGas;
     private TextView mEnterMiles;
     private TextView btnSelectDate;
