@@ -1,6 +1,7 @@
 package projects.morrow.gastracker2;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -12,12 +13,25 @@ public class EntryList {
 
     private ArrayList<Entry> mEntries;
 
+    private static final String FILENAME = "entries.json";
+    private GasTrackerJSONSerializer mSerializer;
+
+    private static final String TAG = "EntryList";
+
     private static EntryList sList;
     private Context mAppContext;
 
     private EntryList(Context appContext) {
         mAppContext = appContext;
-        mEntries = new ArrayList<Entry>();
+        mSerializer = new GasTrackerJSONSerializer(mAppContext, FILENAME);
+        Log.d(TAG, mSerializer.toString());
+        try {
+            mEntries = mSerializer.loadEntries();
+            Log.d(TAG, "list loaded");
+        } catch (Exception e) {
+            mEntries = new ArrayList<Entry>();
+            Log.e(TAG, "list not loaded");
+        }
     }
 
     public static EntryList get(Context c) {
@@ -62,4 +76,14 @@ public class EntryList {
         }
     }
 
+    public boolean saveCrimes() {
+        try {
+            mSerializer.saveEntries(mEntries);
+            Log.d(TAG, "entries saved");
+            return true;
+        } catch (Exception e) {
+            Log.e("EntryList", "Error saving entries: ", e);
+            return false;
+        }
+    }
 }

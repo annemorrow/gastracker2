@@ -99,4 +99,10 @@ public class EntryListActivity extends ListActivity {
             return convertView;
         }
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        EntryList.get(this).saveCrimes();
+    }
 }

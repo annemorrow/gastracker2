@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
@@ -37,12 +38,16 @@ public class EntryActivity extends FragmentActivity {
     public  int year,month,day;
     private int mYear, mMonth, mDay;
 
+    private ArrayList<Entry> entries;
+
     public static final String EXTRA_ENTRY_ID = "projects.morrow.gastracker2.entry_id";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         UUID id = (UUID) getIntent().getSerializableExtra(EXTRA_ENTRY_ID);
         if (id != null) {
@@ -190,4 +195,6 @@ public class EntryActivity extends FragmentActivity {
         DialogFragment date = new DatePickerFragment();
         date.show(getSupportFragmentManager(), "datePicker");
     }
+
+
 }
