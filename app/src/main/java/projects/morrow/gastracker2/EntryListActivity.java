@@ -66,6 +66,7 @@ public class EntryListActivity extends ListActivity {
     public void onListItemClick(ListView l, View v, int position, long id) {
         Entry e = ((EntryAdapter)getListAdapter()).getItem(position);
         Intent i = new Intent(this, EntryActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.putExtra(EntryActivity.EXTRA_ENTRY_ID, e.getID());
         startActivity(i);
     }
