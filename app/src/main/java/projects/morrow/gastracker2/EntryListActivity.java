@@ -1,7 +1,7 @@
 package projects.morrow.gastracker2;
 
 import android.app.ListActivity;
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 
 public class EntryListActivity extends ListActivity {
@@ -61,6 +60,14 @@ public class EntryListActivity extends ListActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        Entry e = ((EntryAdapter)getListAdapter()).getItem(position);
+        Intent i = new Intent(this, EntryActivity.class);
+        i.putExtra(EntryActivity.EXTRA_ENTRY_ID, e.getID());
+        startActivity(i);
     }
 
     private class EntryAdapter extends ArrayAdapter<Entry> {

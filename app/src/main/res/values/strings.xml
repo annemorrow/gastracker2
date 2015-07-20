@@ -9,4 +9,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="view_list">View List</string>
     <string name="title_activity_blank_test">BlankTestActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="entry_button">Make New Entry</string>
+    <string name="list_button">See Entry List</string>
+
+    <string name="delete_button">Delete</string>
 </resources>

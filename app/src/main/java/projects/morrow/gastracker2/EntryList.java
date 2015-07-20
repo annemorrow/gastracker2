@@ -31,6 +31,15 @@ public class EntryList {
         mEntries.add(entry);
     }
 
+    public boolean containsEntry(UUID id) {
+        for (Entry e : mEntries) {
+            if (e.getID().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<Entry> getEntries() {
         return mEntries;
     }
@@ -42,6 +51,15 @@ public class EntryList {
             }
         }
         return null;
+    }
+
+    public void deleteEntry(UUID id) {
+        for (int index = 0; index < mEntries.size(); index++) {
+            if (id.equals(mEntries.get(index).getID())) {
+                mEntries.remove(index);
+                return;
+            }
+        }
     }
 
 }

@@ -2,61 +2,23 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/enter_miles"/>
-
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/enter_miles"/>
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/enter_gas"/>
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/enter_gas"/>
-
-    <Button
-        android:id="@+id/buttonSelectDate"
-        android:layout_marginTop="20dp"
-        android:textSize="15dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Select Date" />
+                tools:context="projects.morrow.gastracker2.MainActivity"
+                android:orientation="vertical">
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/enter_button_text"
-        android:ems="15"
-        android:id="@+id/enter_button"
-        android:layout_gravity="center_horizontal"/>
+        android:text="@string/entry_button"
+        android:id="@+id/entry_button"/>
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/view_list"
-        android:ems="15"
-        android:id="@+id/list_button"
-        android:layout_gravity="center_horizontal"/>
+        android:text="@string/list_button"
+        android:id="@+id/list_button"/>
 
 </LinearLayout>
