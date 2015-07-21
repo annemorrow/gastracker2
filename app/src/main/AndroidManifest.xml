@@ -10,7 +10,6 @@
         <activity
             android:name=".EntryActivity"
             android:label="@string/app_name" >
-
         </activity>
         <activity
             android:name=".EntryListActivity"
@@ -28,6 +27,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".GraphActivity"
+            android:label="@string/title_activity_graph" >
         </activity>
     </application>
 

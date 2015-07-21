@@ -21,4 +21,10 @@
         android:text="@string/list_button"
         android:id="@+id/list_button"/>
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/see_graph_button"
+        android:id="@+id/see_graph_button"/>
+
 </LinearLayout>

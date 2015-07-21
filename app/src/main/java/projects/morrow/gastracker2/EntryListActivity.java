@@ -23,18 +23,6 @@ public class EntryListActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_list);
-
-        // mListView = (ListView) findViewById(R.id.list);
-/*
-        Entry first = new Entry(15, 15, Calendar.getInstance().getTime());
-        Entry second = new Entry (1, 14, Calendar.getInstance().getTime());
-        Entry third = new Entry (30, 10, Calendar.getInstance().getTime());
-
-        mEntryList = new ArrayList<Entry>();
-        mEntryList.add(first);
-        mEntryList.add(second);
-        mEntryList.add(third);
-*/
         mEntryList = EntryList.get(this).getEntries();
         EntryAdapter adapter = new EntryAdapter(mEntryList);
         setListAdapter(adapter);

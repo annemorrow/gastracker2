@@ -6,7 +6,6 @@
     <string name="enter_button_text">Enter</string>
     <string name="title_activity_entry_list">EntryListActivity</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="view_list">View List</string>
     <string name="title_activity_blank_test">BlankTestActivity</string>
     <string name="title_activity_main">MainActivity</string>
@@ -15,4 +14,7 @@
     <string name="list_button">See Entry List</string>
 
     <string name="delete_button">Delete</string>
+    <string name="title_activity_graph">GraphActivity</string>
+
+    <string name="see_graph_button">Graph</string>
 </resources>

@@ -15,6 +15,7 @@ public class MainActivity extends Activity {
 
     Button mEntryButton;
     Button mListButton;
+    Button mSeeGraphButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         mEntryButton = (Button) findViewById(R.id.entry_button);
         mListButton = (Button) findViewById(R.id.list_button);
+        mSeeGraphButton = (Button) findViewById(R.id.see_graph_button);
 
         mEntryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +36,13 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, EntryListActivity.class);
+                startActivity(i);
+            }
+        });
+        mSeeGraphButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, GraphActivity.class);
                 startActivity(i);
             }
         });
