@@ -3,6 +3,7 @@ package projects.morrow.gastracker2;
 import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -33,9 +34,8 @@ public class GraphActivity extends Activity {
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(series());
         graph.addSeries(series);
         graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
-        graph.getGridLabelRenderer().setNumHorizontalLabels(3); // only 4 because of the space
         graph.getViewport().setMinX(dates()[0].getTime());
-        graph.getViewport().setMaxX(dates()[mEntryList.size()-1].getTime());
+        graph.getViewport().setMaxX(dates()[mEntryList.size() - 1].getTime());
         graph.getViewport().setXAxisBoundsManual(true);
     }
 
@@ -45,9 +45,13 @@ public class GraphActivity extends Activity {
         double[] mpg = new double[size];
         if (mpg.length > 1) {
             for (int i = 1; i < size; i++) {
-                double miles = (double) (mEntryList.get(i).getMiles() - mEntryList.get(i-1).getMiles());
-                double gallons = (double) (mEntryList.get(i).getGas() - mEntryList.get(i-1).getGas());
+                int milesI = mEntryList.get(i).getMiles();
+                int milesBeforeI = mEntryList.get(i-1).getMiles();
+                Log.d("MPG", "milesI is " + milesI + " and milesBeforeI is " + milesBeforeI);
+                double miles = (double) (milesI - milesBeforeI);
+                double gallons = (double) (mEntryList.get(i).getGas());
                 double milespergallon = miles / gallons;
+                Log.d("MPG", "mpg is " + milespergallon);
                 mpg[i] = milespergallon;
             }
             mpg[0] = mpg[1];
