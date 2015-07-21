@@ -16,10 +16,6 @@
             android:label="@string/title_activity_entry_list" >
         </activity>
         <activity
-            android:name=".BlankTestActivity"
-            android:label="@string/title_activity_blank_test" >
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
             <intent-filter>

@@ -4,17 +4,16 @@
     <string name="enter_gas">Gallons Used (Since Last Entry)</string>
     <string name="enter_miles">Miles Driven (Total)</string>
     <string name="enter_button_text">Enter</string>
-    <string name="title_activity_entry_list">EntryListActivity</string>
+    <string name="title_activity_entry_list">All Entries</string>
 
     <string name="view_list">View List</string>
-    <string name="title_activity_blank_test">BlankTestActivity</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Gas Tracker</string>
 
     <string name="entry_button">Make New Entry</string>
     <string name="list_button">See Entry List</string>
 
     <string name="delete_button">Delete</string>
-    <string name="title_activity_graph">GraphActivity</string>
+    <string name="title_activity_graph">Graph</string>
 
     <string name="see_graph_button">Graph</string>
 </resources>
